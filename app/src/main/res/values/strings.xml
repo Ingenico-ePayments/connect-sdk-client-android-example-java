@@ -5,7 +5,7 @@
 		Any manual changes may be overwritten.
 	-->
 
-	<string name="app_name" translatable="false">Connect example application</string>
+	<string name="app_name">Connect example application</string>
 
 	<string name="gc.app.general.clipboard.feedback">The numbers have been copied.</string>
 	<string name="gc.app.general.errors.noInternetConnection.bodytext">It seems there is no connection to the internet, so please verify this and try again.</string>
@@ -403,8 +403,8 @@
 	<string name="gc.general.paymentProducts.320.preparing">Preparing Google Pay</string>
 	<string name="gc.general.paymentProducts.3201.name">PostFinance Card</string>
 	<string name="gc.general.paymentProducts.3202.name">PostFinance e-finance</string>
-	<string name="gc.general.paymentProducts.4001.name">RuPay credit</string>
-	<string name="gc.general.paymentProducts.4002.name">RuPay debit</string>
+	<string name="gc.general.paymentProducts.4001.name">RuPay Credit</string>
+	<string name="gc.general.paymentProducts.4002.name">RuPay Debit</string>
 	<string name="gc.general.paymentProducts.402.name">e-Przelewy</string>
 	<string name="gc.general.paymentProducts.4101.divider">Or</string>
 	<string name="gc.general.paymentProducts.4101.introduction">How would you like to pay?</string>
@@ -414,7 +414,7 @@
 	<string name="gc.general.paymentProducts.4101.payWithVPALabel">Provide your Virtual Payment Address (VPA) and press pay</string>
 	<string name="gc.general.paymentProducts.4101.processing">Your payment is being processed. Please check your UPI account.</string>
 	<string name="gc.general.paymentProducts.4101.qrCodeLabel">Or open the app on your phone, click ‘Pay’ and scan the QR code.</string>
-	<string name="gc.general.paymentProducts.4101.qrCodeLabelNoButton">Scan the QR code to complete the payment</string>
+	<string name="gc.general.paymentProducts.4101.qrCodeLabel.noButton">Scan the QR code to complete the payment</string>
 	<string name="gc.general.paymentProducts.4101.refreshPaymentButtonText">Refresh payment status</string>
 	<string name="gc.general.paymentProducts.4101.refreshPaymentLabel">Click the button below to refresh your payment status.</string>
 	<string name="gc.general.paymentProducts.4102.name">eNACH</string>
@@ -494,6 +494,7 @@
 	<string name="gc.general.paymentProducts.801.name">ING Home’Pay</string>
 	<string name="gc.general.paymentProducts.8013.name">Clearpay</string>
 	<string name="gc.general.paymentProducts.8014.name">Afterpay</string>
+	<string name="gc.general.paymentProducts.8015.name">Atome</string>
 	<string name="gc.general.paymentProducts.802.name">Nordea E-payment</string>
 	<string name="gc.general.paymentProducts.805.name">Nordea E-payment</string>
 	<string name="gc.general.paymentProducts.806.name">Trustly</string>
