@@ -51,8 +51,7 @@ public class DetailInputViewAfterpayImpl extends DetailInputViewImpl implements 
 
     @Override
     public void renderAfterpayInstallmentSpinner(List<ValueMap> installmentPlans, OnItemSelectedListener listener) {
-        LayoutInflater inflater = LayoutInflater.from(rootView.getContext());
-        View installmentSection = inflater.inflate(R.layout.afterpay_installmentplan_section, null);
+        View installmentSection = View.inflate(rootView.getContext(), R.layout.afterpay_installmentplan_section, null);
         detailInputViewLayoutFieldsAndButtons.addView(installmentSection, 0);
         initializeSpinner(installmentPlans, listener);
     }
@@ -145,7 +144,7 @@ public class DetailInputViewAfterpayImpl extends DetailInputViewImpl implements 
         renderInputFieldsLayout.setVisibility(View.GONE);
 
         LayoutInflater inflater = LayoutInflater.from(rootView.getContext());
-        searchSection = (ViewGroup) inflater.inflate(R.layout.afterpay_search_section, null);
+        searchSection = (ViewGroup) View.inflate(rootView.getContext(), R.layout.afterpay_search_section, null);
         ViewGroup searchFieldsLayout = (ViewGroup) searchSection.findViewById(R.id.search_fields);
         RenderInputDelegate searchFieldRenderer = new RenderInputDelegate(searchFieldsLayout);
 
@@ -224,8 +223,7 @@ public class DetailInputViewAfterpayImpl extends DetailInputViewImpl implements 
 
     @Override
     public void renderSearchResultsSection(String searchResultsText) {
-        LayoutInflater inflater = LayoutInflater.from(rootView.getContext());
-        searchResultsSection = (ViewGroup) inflater.inflate(R.layout.afterpay_search_result_section, null);
+        searchResultsSection = (ViewGroup) View.inflate(rootView.getContext(), R.layout.afterpay_search_result_section, null);
         TextView textView = (TextView) searchResultsSection.findViewById(R.id.search_result_text);
         textView.setText(searchResultsText);
 
@@ -261,9 +259,7 @@ public class DetailInputViewAfterpayImpl extends DetailInputViewImpl implements 
 
         termsAndConditionsView = new LinearLayout(rootView.getContext());
         termsAndConditionsView.setPadding(convertDpToPx(14), 0, convertDpToPx(14), 0);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            termsAndConditionsView.setPaddingRelative(convertDpToPx(14), 0, convertDpToPx(14), 0);
-        }
+        termsAndConditionsView.setPaddingRelative(convertDpToPx(14), 0, convertDpToPx(14), 0);
 
         RenderInputFieldHelper inputRenderer = new RenderInputFieldHelper(termsAndConditionsView);
         inputRenderer.renderField(new RenderBoolean(), field, inputDataPersister, paymentContext);

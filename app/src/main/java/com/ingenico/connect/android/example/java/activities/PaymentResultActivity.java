@@ -73,7 +73,7 @@ public class PaymentResultActivity extends ShoppingCartActivity {
 	}
 
 	public void showDetails(View view) {
-	    if (encryptedFields == null) {
+		if (encryptedFields == null) {
 	        return;
         }
 		detailsText.setText(encryptedFields);

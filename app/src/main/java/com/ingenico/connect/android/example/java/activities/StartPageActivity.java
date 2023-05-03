@@ -131,14 +131,14 @@ public class StartPageActivity extends Activity {
 	public void parseJsonButtonPressed(View view) {
 		DialogUtil.showJsonAlertDialog(this, sessionDetails -> {
 
-            assetUrlEditText.setText(sessionDetails.assetUrl);
-            clientApiUrlEditText.setText(sessionDetails.clientApiUrl);
-            clientSessionIdentifierEditText.setText(sessionDetails.clientSessionId);
-            customerIdentifierEditText.setText(sessionDetails.customerId);
+			assetUrlEditText.setText(sessionDetails.assetUrl);
+			clientApiUrlEditText.setText(sessionDetails.clientApiUrl);
+			clientSessionIdentifierEditText.setText(sessionDetails.clientSessionId);
+			customerIdentifierEditText.setText(sessionDetails.customerId);
 
-            assetUrlEditText.isValid();
-            clientApiUrlEditText.isValid();
-            clientSessionIdentifierEditText.isValid();
+			assetUrlEditText.isValid();
+			clientApiUrlEditText.isValid();
+			clientSessionIdentifierEditText.isValid();
 			customerIdentifierEditText.isValid();
 		});
 	}

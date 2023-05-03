@@ -38,9 +38,6 @@
                     android:scheme="ingenicoconnect" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.PaymentWebViewActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize" />
         <activity android:name=".activities.PaymentProductSelectionActivity" />
         <activity android:name=".activities.DetailInputActivity" />
         <activity android:name=".activities.DetailInputActivityCreditCards" />

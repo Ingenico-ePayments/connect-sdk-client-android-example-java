@@ -24,8 +24,7 @@ public class DetailInputViewBCMCImpl extends  DetailInputViewImpl implements Det
 
     @Override
     public void renderBCMCIntroduction(Bitmap qrCode) {
-        LayoutInflater inflater = LayoutInflater.from(rootView.getContext());
-        View bcmcLayout = inflater.inflate(R.layout.layout_bcmc, null);
+        View bcmcLayout = View.inflate(rootView.getContext(), R.layout.layout_bcmc, null);
         ImageView qrCodeView = (ImageView) bcmcLayout.findViewById(R.id.qrcode);
         if (qrCodeView != null) {
             qrCodeView.setImageBitmap(qrCode);

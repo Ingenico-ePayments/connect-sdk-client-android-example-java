@@ -18,6 +18,8 @@ import com.ingenico.connect.android.example.java.model.ShoppingCartItem;
 import com.ingenico.connect.android.example.java.util.CurrencyUtil;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.PaymentContext;
 
+import java.util.Locale;
+
 /**
  * View for the Header that shows the merchant logo and shoppingcart
  *
@@ -70,21 +72,21 @@ public class HeaderViewImpl implements HeaderView {
             TextView label = new TextView(context);
             label.setText(item.getDescription());
             label.setTextAppearance(context, R.style.TotalCostLayoutSmallText);
-            label.setGravity(Gravity.LEFT);
+            label.setGravity(Gravity.START);
             layout.addView(label, descriptionParams);
 
             //Show the quantity
             TextView quantity = new TextView(context);
-            quantity.setText("" + item.getQuantity());
+            quantity.setText(String.format(Locale.ROOT, "%d", item.getQuantity()));
             quantity.setTextAppearance(context, R.style.TotalCostLayoutSmallText);
-            quantity.setGravity(Gravity.LEFT);
+            quantity.setGravity(Gravity.START);
             layout.addView(quantity, quantityParams);
 
             //Show the amount formatted
             TextView cost = new TextView(context);
             cost.setText(CurrencyUtil.formatAmount(item.getAmountInCents(), paymentContext.getCountryCode(), paymentContext.getAmountOfMoney().getCurrencyCode()));
             cost.setTextAppearance(context, R.style.TotalCostLayoutSmallText);
-            cost.setGravity(Gravity.RIGHT);
+            cost.setGravity(Gravity.END);
             layout.addView(cost, costParams);
 
             totalCostDetailsLayout.addView(layout, 1, params);
