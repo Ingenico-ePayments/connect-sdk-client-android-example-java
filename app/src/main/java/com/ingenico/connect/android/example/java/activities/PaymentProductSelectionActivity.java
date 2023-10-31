@@ -5,8 +5,6 @@
 package com.ingenico.connect.android.example.java.activities;
 
 import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTGROUPID_CARDS;
-import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTID_AFTERPAY_INSTALLMENTS;
-import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTID_AFTERPAY_INVOICE;
 import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTID_BOLETOBANCARIO;
 import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTID_BanContact;
 import static com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants.PAYMENTPRODUCTID_GOOGLEPAY;
@@ -249,10 +247,6 @@ public class PaymentProductSelectionActivity extends ShoppingCartActivity implem
 
         } else if (PAYMENTPRODUCTID_BOLETOBANCARIO.equals(paymentItem.getId())) {
             detailInputActivityIntent = new Intent(this, DetailInputActivityBoletoBancario.class);
-
-        } else if (PAYMENTPRODUCTID_AFTERPAY_INSTALLMENTS.equals(paymentItem.getId()) ||
-                PAYMENTPRODUCTID_AFTERPAY_INVOICE.equals(paymentItem.getId())) {
-            detailInputActivityIntent = new Intent(this, DetailInputActivityAfterpay.class);
 
         } else {
             detailInputActivityIntent = new Intent(this, DetailInputActivity.class);

@@ -41,7 +41,6 @@
         <activity android:name=".activities.DetailInputActivity" />
         <activity android:name=".activities.DetailInputActivityCreditCards" />
         <activity android:name=".activities.DetailInputActivityBoletoBancario" />
-        <activity android:name=".activities.DetailInputActivityAfterpay" />
         <activity android:name=".activities.DetailInputActivityBCMC" />
         <activity android:name=".activities.BCMCProcessingActivity" />
 

@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingenico.connect.android.example.java.render.persister.InputDataPersister;
-import com.ingenico.connect.gateway.sdk.client.android.sdk.configuration.Constants;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.PaymentContext;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.paymentproduct.FormElement.ListType;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.paymentproduct.PaymentProductField;
@@ -95,12 +94,6 @@ public class RenderInputDelegate {
 		RenderInputRegistry registry = new RenderInputRegistry(customRenderers);
 
 		for (PaymentProductField field : paymentProductFields) {
-
-			// The installment plans for Afterpay will be rendered by the DetailInputAfterpayImpl class.
-			// Their setup is not compatible with the default renderer and vice versa.
-			if (Constants.INSTALLMENTPLAN_FIELD_ID.equals(field.getId())) {
-				continue;
-			}
 
 			RenderInputFieldInterface renderer = registry.getRenderInputFieldForFieldType(field.getDisplayHints().getFormElement().getType());
 			if (renderer != null) {

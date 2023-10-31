@@ -24,6 +24,15 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField "Boolean", "LOGGING_ENABLED", 'true'
+        }
+        // To disable logging in production, you can set the LOGGING_ENABLED field to false in a release build of your app
+        /*
+        release {
+            buildConfigField "Boolean", "LOGGING_ENABLED", 'false'
+        }
+        */
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

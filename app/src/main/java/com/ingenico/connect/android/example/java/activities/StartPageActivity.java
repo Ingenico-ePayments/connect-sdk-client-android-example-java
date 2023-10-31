@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.ingenico.connect.android.example.java.BuildConfig;
 import com.ingenico.connect.android.example.java.R;
 import com.ingenico.connect.android.example.java.configuration.Constants;
 import com.ingenico.connect.android.example.java.dialog.DialogUtil;
@@ -155,7 +156,7 @@ public class StartPageActivity extends Activity {
 				sessionConfiguration,
 				getApplicationContext()
 		)
-				.enableNetworkLogs(true)
+				.enableNetworkLogs(BuildConfig.LOGGING_ENABLED)
 				.preLoadImages(false)
 				.applicationId(APPLICATION_IDENTIFIER)
 				.build();

@@ -7,7 +7,7 @@ package com.ingenico.connect.android.example.java.configuration;
 public class Constants {
 
 	/** Application Identifier, used for identifying the application in network calls **/
-	public static String APPLICATION_IDENTIFIER = "Android Example Application/v1.4.1";
+	public static String APPLICATION_IDENTIFIER = "Android Example Application/v1.4.2";
 
 	/** Intent data keys **/
 	public final static String INTENT_PAYMENT_ENCRYPTED_FIELDS   = "encryptedFields";
