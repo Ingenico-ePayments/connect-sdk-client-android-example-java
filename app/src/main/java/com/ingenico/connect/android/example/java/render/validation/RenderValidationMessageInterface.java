@@ -4,7 +4,6 @@
 
 package com.ingenico.connect.android.example.java.render.validation;
 import android.view.ViewGroup;
-;
 
 /**
  * Defines the rendering of tooltip interface methods

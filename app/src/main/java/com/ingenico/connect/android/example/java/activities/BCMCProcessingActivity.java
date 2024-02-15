@@ -8,17 +8,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import androidx.activity.OnBackPressedCallback;
+
 import com.ingenico.connect.android.example.java.R;
 import com.ingenico.connect.android.example.java.configuration.Constants;
 import com.ingenico.connect.android.example.java.exception.ThirdPartyStatusNotAllowedException;
 import com.ingenico.connect.android.example.java.model.ShoppingCart;
 import com.ingenico.connect.android.example.java.view.detailview.BCMCProcessingView;
 import com.ingenico.connect.android.example.java.view.detailview.BCMCProcessingViewImpl;
-import com.ingenico.connect.gateway.sdk.client.android.sdk.asynctask.ThirdPartyStatusAsyncTask.OnThirdPartyStatusCallCompleteListener;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.ThirdPartyStatus;
 
 
-public class BCMCProcessingActivity extends ShoppingCartActivity implements OnThirdPartyStatusCallCompleteListener {
+public class BCMCProcessingActivity extends ShoppingCartActivity {
 
     private static final Handler delay = new Handler();
 
@@ -48,6 +49,8 @@ public class BCMCProcessingActivity extends ShoppingCartActivity implements OnTh
                 processThirdPartyStatus(currentThirdPartyStatus);
             }
         }
+
+        setOnBackPressedListener();
     }
 
     private void initializeIntentData() {
@@ -73,11 +76,14 @@ public class BCMCProcessingActivity extends ShoppingCartActivity implements OnTh
         pollForThirdPartyStatus();
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        delay.removeCallbacksAndMessages(null);
-        finish();
+    private void setOnBackPressedListener() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                delay.removeCallbacksAndMessages(null);
+                finish();
+            }
+        });
     }
 
     private void pollForThirdPartyStatus() {
@@ -89,7 +95,7 @@ public class BCMCProcessingActivity extends ShoppingCartActivity implements OnTh
                 public void run() {
                     /**
                      * Here you will want to perform a poll to retrieve the ThirdPartyStatus
-                     *     session.getThirdPartyStatus(this, yourPaymentId, this);
+                     *     ConnectSDK.INSTANCE.getClientApi().getThirdPartyStatus(yourPaymentId, onSuccess, onApiError, onFailure);
                      * As this example app does not have a valid paymentId however, we will spoof the
                      * getThirdPartyStatusCall here.
                      */
@@ -101,22 +107,21 @@ public class BCMCProcessingActivity extends ShoppingCartActivity implements OnTh
 
     /**
      * Helper function that simulates progress with the 3rd party payment. In the end it ensures
-     * that the
+     * that the ThirdPartyStatus is COMPLETED.
      */
     private int counter = 0;
     private void simulateThirdPartyProgress() {
         counter++;
         if (counter < 4) {
-            onThirdPartyStatusCallComplete(ThirdPartyStatus.INITIALIZED);
-        } else if (counter >= 4 && counter < 8) {
-            onThirdPartyStatusCallComplete(ThirdPartyStatus.AUTHORIZED);
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.INITIALIZED);
+        } else if (counter < 8) {
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.AUTHORIZED);
         } else {
-            onThirdPartyStatusCallComplete(ThirdPartyStatus.COMPLETED);
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.COMPLETED);
         }
     }
 
-    @Override
-    public void onThirdPartyStatusCallComplete(ThirdPartyStatus thirdPartyStatus) {
+    private void onThirdPartyStatusCallSuccess(ThirdPartyStatus thirdPartyStatus) {
         pollInProgress = false;
         if (thirdPartyStatus != null) {
             currentThirdPartyStatus = thirdPartyStatus;

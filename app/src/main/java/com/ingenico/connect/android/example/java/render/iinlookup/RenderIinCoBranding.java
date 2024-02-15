@@ -6,8 +6,6 @@ package com.ingenico.connect.android.example.java.render.iinlookup;
 
 import android.content.Context;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;

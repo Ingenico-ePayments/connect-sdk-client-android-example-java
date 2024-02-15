@@ -7,7 +7,6 @@ package com.ingenico.connect.android.example.java.render.product;
 import java.security.InvalidParameterException;
 
 import android.content.Context;
-import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

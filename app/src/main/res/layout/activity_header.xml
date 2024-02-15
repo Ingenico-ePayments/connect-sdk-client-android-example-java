@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/header_layout"
-	tools:context="com.ingenico.connect.gateway.sdk.client.android.exampleapp.activities.ShoppingCartActivity">
+	tools:context="com.ingenico.connect.android.example.java.activities.ShoppingCartActivity">
 
     <ImageView
         android:id="@+id/headerImage"

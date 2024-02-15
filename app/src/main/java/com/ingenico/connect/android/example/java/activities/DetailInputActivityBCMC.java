@@ -17,10 +17,12 @@ import com.ingenico.connect.android.example.java.configuration.Constants;
 import com.ingenico.connect.android.example.java.model.KeyValuePair;
 import com.ingenico.connect.android.example.java.view.detailview.DetailInputViewBCMC;
 import com.ingenico.connect.android.example.java.view.detailview.DetailInputViewBCMCImpl;
-import com.ingenico.connect.gateway.sdk.client.android.sdk.asynctask.ThirdPartyStatusAsyncTask.OnThirdPartyStatusCallCompleteListener;
 import com.ingenico.connect.gateway.sdk.client.android.sdk.model.ThirdPartyStatus;
 
 import android.net.Uri;
+
+import androidx.activity.OnBackPressedCallback;
+
 import java.util.List;
 
 /**
@@ -28,7 +30,7 @@ import java.util.List;
  *
 
  */
-public class DetailInputActivityBCMC extends DetailInputActivity implements OnThirdPartyStatusCallCompleteListener{
+public class DetailInputActivityBCMC extends DetailInputActivity {
 
     private static final String QRCODE = "QRCODE";
     private static final String URLINTENT = "URLINTENT";
@@ -52,6 +54,8 @@ public class DetailInputActivityBCMC extends DetailInputActivity implements OnTh
         Bitmap qrCode = loadQrCode();
 
         fieldView.renderBCMCIntroduction(qrCode);
+
+        setOnBackPressedListener();
     }
 
     @Override
@@ -84,11 +88,14 @@ public class DetailInputActivityBCMC extends DetailInputActivity implements OnTh
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        delay.removeCallbacksAndMessages(null);
-        finish();
+    private void setOnBackPressedListener() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                delay.removeCallbacksAndMessages(null);
+                finish();
+            }
+        });
     }
 
     @Override
@@ -110,18 +117,33 @@ public class DetailInputActivityBCMC extends DetailInputActivity implements OnTh
                 public void run() {
                 /**
                  * Here you will want to perform a poll to retrieve the ThirdPartyStatus
-                 *     session.getThirdPartyStatus(this, yourPaymentId, this);
+                 *     ConnectSDK.INSTANCE.getClientApi().getThirdPartyStatus(yourPaymentId, onSuccess, onApiError, onFailure);
                  * As this example app does not have a valid paymentId however, we will spoof the
                  * getThirdPartyStatusCall here.
                  */
-                onThirdPartyStatusCallComplete(ThirdPartyStatus.WAITING);
+                simulateThirdPartyProgress();
                 }
             }, 3000); // Poll once every three seconds
         }
     }
 
-    @Override
-    public void onThirdPartyStatusCallComplete(ThirdPartyStatus thirdPartyStatus) {
+    /**
+     * Helper function that simulates progress with the 3rd party payment. In the end it ensures
+     * that the ThirdPartyStatus is COMPLETED.
+     */
+    private int counter = 0;
+    private void simulateThirdPartyProgress() {
+        counter++;
+        if (counter < 4) {
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.INITIALIZED);
+        } else if (counter < 8) {
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.AUTHORIZED);
+        } else {
+            onThirdPartyStatusCallSuccess(ThirdPartyStatus.COMPLETED);
+        }
+    }
+
+    private void onThirdPartyStatusCallSuccess(ThirdPartyStatus thirdPartyStatus) {
         pollInProgress = false;
         if (thirdPartyStatus != null) {
             switch (thirdPartyStatus) {

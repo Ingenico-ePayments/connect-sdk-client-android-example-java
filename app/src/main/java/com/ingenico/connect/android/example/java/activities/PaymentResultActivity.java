@@ -6,7 +6,6 @@ package com.ingenico.connect.android.example.java.activities;
 
 import android.content.ClipData;
 import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;

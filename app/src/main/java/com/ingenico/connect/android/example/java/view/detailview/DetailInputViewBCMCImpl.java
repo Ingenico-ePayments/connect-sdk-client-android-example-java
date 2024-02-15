@@ -7,7 +7,6 @@ package com.ingenico.connect.android.example.java.view.detailview;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import androidx.annotation.IdRes;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
