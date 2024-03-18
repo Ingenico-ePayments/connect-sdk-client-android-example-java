@@ -1,5 +1,9 @@
 # Ingenico Connect Android SDK example
 
+**This example app has been rebranded to Worldline. As part of the rebranding the example app has moved to https://github.com/Worldline-Global-Collect/connect-sdk-client-android-example-java.**
+
+---
+
 This example app illustrates the use of the [Ingenico Connect Android Client SDK](https://github.com/Ingenico-ePayments/connect-sdk-client-android) and the services provided by Ingenico ePayments on the Ingenico ePayments platform.
 This repository contains a Java XML based example. It demonstrates the UI and business logic required to perform a basic Credit Card payment. The steps supported are selecting a payment product, fill in the required payment details and encrypting those details.
 
